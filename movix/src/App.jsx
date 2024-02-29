@@ -6,7 +6,8 @@ const App = () => {
 
   return (
     <>
-      
+      <h1>Spotify</h1>
+      <p>Listen ads Free music</p>
     </>
   );
 };
