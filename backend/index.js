@@ -4,13 +4,13 @@ const JwtStrategy = require('passport-jwt').Strategy,
     ExtractJwt = require('passport-jwt').ExtractJwt;
 const User=require('./models/User')    
 const passport =require('passport');    
+const authRoutes=require("./routes/auth")
 require("dotenv").config();
-
-
-
 
 const app= express();
 const port=8000
+app.use(express.json());
+
 
 // database connect
 mongoose.connect("mongodb+srv://sainishivamsaini12345:"+process.env.MONGO_PASSWORD+"@cluster0.z3fa8va.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
@@ -55,6 +55,8 @@ app.get('/',(req,res)=>{
 
     res.send("Hello Shivam Saini")
 });
+
+app.use("/auth",authRoutes);
 
 app.listen(port,()=>{
     console.log("App Running on Port "+ port)
