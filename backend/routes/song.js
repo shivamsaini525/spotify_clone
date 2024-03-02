@@ -1,7 +1,6 @@
-const express=require('express');
-const passport = require('passport');
+const express= require('express');
 const router=express.Router();
-const passport=require("passport");
+const passport = require('passport');
 const Song=require('../models/Song');
 const User=require("../models/User");
 
@@ -25,7 +24,7 @@ router.get("/get/mysong",passport.authenticate("jwt",{session:false}),async(req,
     return res.status(200).json({data:songs});
 
 })
-router.get("/get/artist",passport.authenticate("jwt"),{session:false},async(req,res)=>{
+router.get("/get/artist",passport.authenticate("jwt",{session:false}),async(req,res)=>{
 
     const {artistId}=req.body;
     const artist=await User.find({_id:artistId})
@@ -36,7 +35,7 @@ router.get("/get/artist",passport.authenticate("jwt"),{session:false},async(req,
     return res.status(200).json({data:song});
 });
 
-router.get("/get/songname",passport.authenticate("jwt"),{session:false},async(req,res)=>{
+router.get("/get/songname",passport.authenticate("jwt",{session:false}),async(req,res)=>{
 
     const {songName}=req.body;
     const song=await Song.find({name:songName});
