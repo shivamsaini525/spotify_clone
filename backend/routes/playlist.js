@@ -3,6 +3,7 @@ const passport = require('passport');
 const router=express.Router();
 const Playlist=require('../models/Playlist')
 const User=require("../models/User");
+const Song=require("../models/Song");
 
 router.post("/create/playlist",passport.authenticate("jwt",{session:false}),async(req,res)=>{
   const curentUser=req.user
@@ -43,4 +44,28 @@ router.get("/get/artist/:artistId",passport.authenticate("jwt",{session:false}),
   const playlist=await Playlist.find({owner:artistId});
   return res.status(200).json({data:playlist});
 });
+
+router.post("/add/song/",passport.authenticate("jwt",{session:false}),async(req,res)=>{
+
+  const currentUser=req.user;
+  const{playlistId,songId}=req.body;
+  const playlist=await Playlist.findOne({_id:playlistId});
+  if(!playlist){
+    return res.status(300).json({error:"playlist does not exit"});
+  }
+  if(playlist.owner != currentUser._id && !playlist.collaborator.includes(currentUser._id)){
+
+    return res.status(400).json({error:"not allowed"});
+  }
+
+  const song=await Song.findOne({_id:songId})
+  if(!song){
+    return res.status(400).json({error:"song does not exit"})
+  }
+  playlist.songs.push(songId);
+  await playlist.save();
+  return res.status(200).json(playlist);
+
+});
+
 module.exports=router;
