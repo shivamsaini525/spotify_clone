@@ -24,9 +24,9 @@ router.get("/get/mysong",passport.authenticate("jwt",{session:false}),async(req,
     return res.status(200).json({data:songs});
 
 })
-router.get("/get/artist",passport.authenticate("jwt",{session:false}),async(req,res)=>{
+router.get("/get/artist/:artistId",passport.authenticate("jwt",{session:false}),async(req,res)=>{
 
-    const {artistId}=req.body;
+    const {artistId}=req.params;
     const artist=await User.find({_id:artistId})
     if(!artist){
          return res.status(301).json({error:"Artist dones not exit"});
@@ -35,9 +35,9 @@ router.get("/get/artist",passport.authenticate("jwt",{session:false}),async(req,
     return res.status(200).json({data:song});
 });
 
-router.get("/get/songname",passport.authenticate("jwt",{session:false}),async(req,res)=>{
+router.get("/get/songname/:songName",passport.authenticate("jwt",{session:false}),async(req,res)=>{
 
-    const {songName}=req.body;
+    const {songName}=req.params;
     const song=await Song.find({name:songName});
     return res.status(200).json({data:song});
 });
