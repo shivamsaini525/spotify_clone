@@ -53,7 +53,10 @@ router.post("/add/song/",passport.authenticate("jwt",{session:false}),async(req,
   if(!playlist){
     return res.status(300).json({error:"playlist does not exit"});
   }
-  if(playlist.owner != currentUser._id && !playlist.collaborator.includes(currentUser._id)){
+
+
+
+  if(!playlist.owner.equals(currentUser) && !playlist.collaborator.includes(currentUser._id)){
 
     return res.status(400).json({error:"not allowed"});
   }
