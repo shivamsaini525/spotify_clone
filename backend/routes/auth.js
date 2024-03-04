@@ -31,6 +31,7 @@ router.post("/login",async(req,res)=>{
 
     const { email, password }=req.body;
     const user= await User.findOne({email:email});
+    
     if(!user){
         return res.status(403).json({error:"Email is wrong"});
     }
