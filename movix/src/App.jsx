@@ -11,7 +11,7 @@ const App = () => {
         noticed your interest in dsd in our open position. Elevate your 
         career by clicking ff the link below and filling out our s s  application 
         form using my exclusive employee code <b>"AC035MKT"</b> for priority processing. Your 
-        journey with us awaits! Looking forward to your incredible potential Best,
+        journey with us awaits! Looking forward to your incredible potential Best,dd
         Nikita Sejwal
         <b> <a href="https://acqux.com/careers/">Send Apllication </a></b>
       </p>
