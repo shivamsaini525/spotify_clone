@@ -9,10 +9,10 @@ const LoginComponent =()=>{
          <Icon icon="logos:spotify" width="145" /> 
         </div>
         <div className='inputRegion'>
-             <form>
+             {/* <form>
                 <label type="text" className='block text-sm font-medium leading-6 text-gray-900'>Email</label>
                 <input type="email" className='p-2 border border-solid border-black-400' placeholder='Enter your email addresas' name="email"></input>
-             </form>
+             </form> */}
         </div>
        
        </div>
