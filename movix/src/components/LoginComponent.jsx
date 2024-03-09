@@ -10,8 +10,8 @@ const LoginComponent =()=>{
          <Icon icon="logos:spotify" width="145" /> 
         </div>
         <div className='inputRegion w-1/3 py-10 flex items-center justify-center flex-col'>
-         <div className='font-bold'>To continue, log in to Spotify</div>
-         <TextInput />
+         <div className='font-bold mb-10'>To continue, log in to Spotify</div>
+         <TextInput label="Email ID or username" placeholder="Email ID or Username" />
         </div>
        
        </div>
