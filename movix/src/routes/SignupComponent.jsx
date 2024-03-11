@@ -2,6 +2,7 @@ import { Icon } from '@iconify-icon/react';
 import TextInput from '../components/shared/TextInput';
 import PasswordInput from '../components/shared/PasswordInput';
 // import style from "./LoginComponent.module.css";
+import {Link} from 'react-router-dom';
 
 const SignupComponent =()=>{
   return(
@@ -22,8 +23,8 @@ const SignupComponent =()=>{
            <button className='bg-green-400 font-semibold p-3 px-10 rounded-full  '>SIGN UP</button>
           </div>
           <div className='w-full border border-solid border-gray-300'></div>
-          <div className='my-6 font-font-semibold text-lg'>Have an account</div>
-          <div className='border-4 border-black-600 text-gray-500 w-full flex items-center  justify-center py-4 rounded-full'>LOG IN FOR SPOTIFY</div>
+          <div className='my-6 font-font-semibold text-lg'>Already Have an account</div>
+          <div className='border-4 border-black-600 text-gray-500 w-full flex items-center  justify-center py-4 rounded-full'><Link to="/login">LOG IN INSTEAD</Link></div>
         </div>
        
        </div>

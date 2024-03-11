@@ -2,6 +2,7 @@ import { Icon } from '@iconify-icon/react';
 import TextInput from './shared/TextInput';
 import PasswordInput from './shared/PasswordInput';
 // import style from "./LoginComponent.module.css";
+import {Link} from 'react-router-dom';
 
 const LoginComponent =()=>{
   return(
@@ -19,7 +20,7 @@ const LoginComponent =()=>{
           </div>
           <div className='w-full border border-solid border-gray-300'></div>
           <div className='my-6 font-font-semibold text-lg'>Don't have an account</div>
-          <div className='border-4 border-black-600 text-gray-500 w-full flex items-center  justify-center py-4 rounded-full'>SIGN UP FOR SPOTIFY</div>
+          <div className='border-4 border-black-600 text-gray-500 w-full flex items-center  justify-center py-4 rounded-full'><Link to="/signup"> SIGN UP FOR SPOTIFY</Link></div>
         </div>
        
        </div>
