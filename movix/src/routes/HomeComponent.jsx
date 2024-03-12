@@ -17,8 +17,9 @@ const HomeComponent=()=>{
                     <IconText iconName={"icomoon-free:books"} displayText={"Library"}/>
                    </div>
                    <div>
-                   <IconText iconName={"icomoon-free:books"} displayText={"Library"}/>
-                   <IconText iconName={"icomoon-free:books"} displayText={"Library"}/>
+                   
+                   <IconText iconName={"ph:plus-fill"} displayText={"Create Playlist"}/>
+                   <IconText iconName={"healthicons:heart-negative"} displayText={"Liked Song"}/>
                    </div>
                 </div>
                 <div className="h-full">
