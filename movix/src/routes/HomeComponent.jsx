@@ -53,10 +53,45 @@ const HomeComponent=()=>{
                        
                         
                     </div> 
-                    <div className="content">main content</div>
+                    <div className="content text-white p-8">
+                      <PlaylistView />
+                    </div>
                 </div>
             </div>
         </>
     )
 }
+
+const PlaylistView=()=>{
+    return(
+        <>
+            <div className="text-white">
+                <div className="text-2xl font-semibold mb-5">Focus</div>
+                <div className="w-full flex justify-between">
+                    <Card title="Peaceful Piano" description="Relax and indulge with beautiful piano pieces" src="https://images.unsplash.com/photo-1633622800679-bf4dfaa260c1?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
+                    <Card title="Deep Focus" description="Keep calm and focus with this music" src="https://images.unsplash.com/photo-1645207213625-aa6367cbab66?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
+                    <Card title="Instrumental Study" description="Focus with soft study music in the background" src="https://images.unsplash.com/photo-1645860265927-02deb3fe4359?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
+                    <Card title="Focus Flow" description="Up tempo instrumental hip hop beats" src="https://images.unsplash.com/photo-1646734329499-0afb2db25fb3?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
+                    <Card title="Beats to think to" description="Focus with deep base techno" src="https://images.unsplash.com/photo-1645036993886-efdfd96ca97f?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
+                </div>
+            </div>
+        </>
+    );
+};
+
+const Card=({title,description,src})=>{
+    return(
+        <>
+        <div className="bg-black bg-opacity-60 w-1/6 p-4 rounded-lg">
+            <div className="pb-4 pt-2">
+                <img className="w-full rounded-md " src={src}  alt="label" />
+            </div>
+            <div className="text-white text-sm font-semibold">{title}</div>
+            <div className="text-gray-500 text-sm"> {description}</div>
+
+        </div>
+                
+        </>
+    );    
+};
 export default HomeComponent
