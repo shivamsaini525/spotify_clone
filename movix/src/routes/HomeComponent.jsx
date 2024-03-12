@@ -13,9 +13,12 @@ const HomeComponent=()=>{
                    <div>
                     
                     <IconText iconName={"material-symbols-light:home"} displayText={"Home"} active/>
-                    <IconText iconName={"material-symbols:search"}   displayText={"Search"}/>
-                    
+                    <IconText iconName={"material-symbols:search"}   displayText={"Search"}/> 
                     <IconText iconName={"icomoon-free:books"} displayText={"Library"}/>
+                   </div>
+                   <div>
+                   <IconText iconName={"icomoon-free:books"} displayText={"Library"}/>
+                   <IconText iconName={"icomoon-free:books"} displayText={"Library"}/>
                    </div>
                 </div>
                 <div className="h-full">
