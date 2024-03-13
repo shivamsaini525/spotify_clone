@@ -1,6 +1,7 @@
 import spotify_logo from "../assets/spotify_logo_white.svg";
 import IconText from "../components/shared/IconText";
 import { Icon } from '@iconify-icon/react';
+import {Link} from 'react-router-dom';
 import { TiHome } from "react-icons/ti";
 import TextWithHover from "../components/shared/TextWithHover";
 
@@ -106,7 +107,7 @@ const HomeComponent=()=>{
                             <div className="w-2/5 flex justify-around h-full items-center">
                                 <TextWithHover displayText={"Sign up"}/>
                                 <div className="">
-                                    <button className="bg-white h-2/3 px-8 flex items-center justify-center rounded-full font-semibold text-black">Log In</button>
+                                    <button className="bg-white h-2/3 px-8 flex items-center justify-center rounded-full font-semibold text-black"><Link to="/login">Log In</Link></button>
                                 </div>   
                             </div>
                             
