@@ -6,6 +6,8 @@ import "./output.css";
 import SignupComponent from './routes/SignupComponent';
 import HomeComponent from './routes/HomeComponent';
 import { useCookies } from 'react-cookie';
+import LogedinHome from './routes/LogedinHome';
+import UploadSong from './routes/UploadSong';
 
 const App = () => {
 
@@ -17,12 +19,15 @@ const App = () => {
     <>
     <div className="w-screen h-screen font-poppins">
       <BrowserRouter>
+             
           {
             cookie.token ?(
           
-
+            
           <Routes>
-            <Route path="/home" element={<HomeComponent />} />
+          
+            <Route path="/home" element={<LogedinHome />} />
+            <Route path="/uploadsong" element={<UploadSong />} />
             <Route path="*" element={<Navigate to="/home" />} />
 
             
