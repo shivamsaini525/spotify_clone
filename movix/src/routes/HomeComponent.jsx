@@ -136,7 +136,7 @@ const PlaylistView=({titleText, cardData})=>{
                    
                    {
                     cardData.map(item=>{
-                        return <Card title={item.title} description={item.description} imgUrl={item.imgUrl} /> 
+                        return <Card title={item.title} key={item.title} description={item.description} imgUrl={item.imgUrl} /> 
                     })
                    }
                 </div>
