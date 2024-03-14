@@ -35,7 +35,7 @@ const SignupComponent =()=>{
       date.setDate(date.getDate() + 30);
       setCookie("token",token, {path: "/", expires:date});
       alert("signup successfully");
-      navigate("/")
+      navigate("/home")
     }else{
       console.log("failure");
     }
@@ -58,7 +58,7 @@ const SignupComponent =()=>{
 
          <TextInput label="User Name" placeholder="Enter Your User Name" className="my-6" value={userName} setValue={setUserName} />
 
-         <PasswordInput label="Create Password" placeholder="Enter a Strong Password" value={password} setValue={setPassword} />
+         <PasswordInput label="Password" placeholder="Enter a Strong Password" value={password} setValue={setPassword} />
 
          <div className='w-full flex justify-between items-center space-x-8'>
            <TextInput label="First Name" placeholder="Enter Your First Name" className="my-6" value={firstName} setValue={setFirstName}  />

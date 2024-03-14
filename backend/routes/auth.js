@@ -16,7 +16,7 @@ router.post("/register",async(req,res)=>{
         .json({error:"This user already exits!!"});
     }
     // password hash
-    const hasedPassword=bcrypt.hash(password,10);
+    const hasedPassword=await bcrypt.hash(password,10);
     // create user
     const newUserData={email, password:hasedPassword, firstName, lastName, userName};
     const newUser=await User.create(newUserData)
@@ -28,6 +28,7 @@ router.post("/register",async(req,res)=>{
 });
 
 router.post("/login",async(req,res)=>{
+
 
     const { email, password }=req.body;
     const user= await User.findOne({email:email});
