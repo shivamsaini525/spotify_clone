@@ -1,22 +1,39 @@
 import React, { useEffect, useState } from 'react';
 
-import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
 import LoginComponent from './components/LoginComponent';
 import "./output.css";
 import SignupComponent from './routes/SignupComponent';
 import HomeComponent from './routes/HomeComponent';
+import { useCookies } from 'react-cookie';
+
 const App = () => {
+
+  const [cookie,setCokkie]=useCookies("token");
+  console.log(cookie.token);
 
  
   return (
     <>
     <div className="w-screen h-screen font-poppins">
       <BrowserRouter>
+          {
+            cookie.token ?(
+          
+
           <Routes>
-            <Route path="/" element={<HomeComponent />} />
+            <Route path="/home" element={<HomeComponent />} />
+            <Route path="*" element={<Navigate to="/home" />} />
+
+            
+          </Routes>):(
+            <Routes>
             <Route path="/login" element={<LoginComponent />} />
+            <Route path="/home" element={<HomeComponent />} />
             <Route path="/signup" element={<SignupComponent />} />
-          </Routes>
+            <Route path="*" element={<Navigate to="/login" />} />
+            </Routes>)
+          }
       </BrowserRouter>
      </div>
     </>
