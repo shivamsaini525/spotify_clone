@@ -5,8 +5,11 @@ import {Link} from 'react-router-dom';
 // import { TiHome } from "react-icons/ti";
 import TextWithHover from "../components/shared/TextWithHover";
 import TextInput from "../components/shared/TextInput";
+import CloudinaryUpload from "../components/shared/CloudinaryUpload";
 
 const UploadSong=()=>{
+    console.log(window);
+    console.log(window.cloudinary);
     return(
         <>
         {/* sidebar */}
@@ -73,6 +76,10 @@ const UploadSong=()=>{
                                placeholder="Thumbnail" />
                            </div>
                            
+                           
+                        </div>
+                         <div className="pt-5">
+                            <CloudinaryUpload />
                         </div>
                         
                     </div>
