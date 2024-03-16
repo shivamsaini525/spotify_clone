@@ -8,6 +8,7 @@ import HomeComponent from './routes/HomeComponent';
 import { useCookies } from 'react-cookie';
 import LogedinHome from './routes/LogedinHome';
 import UploadSong from './routes/UploadSong';
+import MyMusic from './routes/MyMusic';
 
 const App = () => {
 
@@ -28,6 +29,8 @@ const App = () => {
           
             <Route path="/home" element={<LogedinHome />} />
             <Route path="/uploadsong" element={<UploadSong />} />
+            <Route path="/myMusic" element={<MyMusic />} />
+
             <Route path="*" element={<Navigate to="/home" />} />
 
             
