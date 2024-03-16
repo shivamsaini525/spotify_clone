@@ -31,25 +31,28 @@ mongoose.connect("mongodb+srv://sainishivamsaini12345:"+process.env.MONGO_PASSWO
 
 
 
-
+// thisKeyIsPagal
 // setup passport
 
-const opts = {}
+const opts = {};
 opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
-opts.secretOrKey = 'thisKeyIsPagal';
-passport.use(new JwtStrategy(opts, function(jwt_payload, done) {
-    User.findOne({id: jwt_payload.sub}, function(err, user) {
-        if (err) {
+opts.secretOrKey = "thisKeyIsPagal";
+
+passport.use(
+    new JwtStrategy(opts, async function (jwt_payload, done) {
+        try {
+            const user = await User.findOne({_id: jwt_payload.identifier});
+            if (user) {
+                return done(null, user);
+            } else {
+                return done(null, false);
+                // or you could create a new account
+            }
+        } catch (err) {
             return done(err, false);
         }
-        if (user) {
-            return done(null, user);
-        } else {
-            return done(null, false);
-            // or you could create a new account
-        }
-    });
-}));
+    })
+);
 
 
 
