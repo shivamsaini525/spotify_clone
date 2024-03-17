@@ -1,19 +1,30 @@
-const SingleSongCard=()=>{
-  
+const SingleSongCard=({info, playSoundd})=>{
+    
     return(
         <>
-            <div className=" flex">
-             <div className="w-12 h-12 bg-white bg-cover bg-center"
-             style={{
-                backgroundImage: `url("https://plus.unsplash.com/premium_photo-1673276864867-d0e27d34e5f7?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")`
-             }}>
+            <div className="flex hover:bg-gray-400 hover:bg-opacity-20 p-2 rounded-md " onClick={()=>{
+                playSoundd(info.track);
+                }}>
+               <div className="w-12 h-12 bg-white bg-cover bg-center"
+                        style={{
+                            backgroundImage: `url("${info.thumbnail}")`
+                        }}>
                  
-             </div>
-             <div className=""></div>
+                </div>
+                <div className="flex w-full">
+                    <div className="text-white flex justify-center flex-col pl-4 w-5/6">
+                        <div className="cursor-pointer hover:underline">{info.name}</div>
+                        <div className="text-xs text-gray-400 cursor-pointer hover:underline">{info.artist.firstName} {info.artist.lastName}</div>
+                    </div>
+                    <div className="w-1/6 flex items-center justify-center text-gray-40 text-sm">
+                        <div>3:44</div>
+                        <div className="text-gray-400 flex  items-center justify-center pl-3 text-lg">...</div>
+                    </div>
+                </div>        
               
             </div>
         </>
-    )
+    );
 
-}
+};
 export default SingleSongCard

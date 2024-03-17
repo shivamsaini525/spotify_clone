@@ -9,9 +9,10 @@ import { useCookies } from 'react-cookie';
 import LogedinHome from './routes/LogedinHome';
 import UploadSong from './routes/UploadSong';
 import MyMusic from './routes/MyMusic';
+import songContext from './contexts/songContext';
 
 const App = () => {
-
+  const [currentSong, setCurrentSong]=useState(null);
   const [cookie,setCokkie]=useCookies("token");
   console.log(cookie.token);
 
@@ -21,25 +22,26 @@ const App = () => {
     <div className="w-screen h-screen font-poppins">
       <BrowserRouter>
              
-          {
-            cookie.token ?(
+        { cookie.token ?(
           
-            
-          <Routes>
-          
-            <Route path="/home" element={<LogedinHome />} />
-            <Route path="/uploadsong" element={<UploadSong />} />
-            <Route path="/myMusic" element={<MyMusic />} />
-
-            <Route path="*" element={<Navigate to="/home" />} />
-
-            
-          </Routes>):(
+          <songContext.Provider value={{currentSong, setCurrentSong}}>  
             <Routes>
-            <Route path="/login" element={<LoginComponent />} />
-            <Route path="/home" element={<HomeComponent />} />
-            <Route path="/signup" element={<SignupComponent />} />
-            <Route path="*" element={<Navigate to="/login" />} />
+            
+          
+              <Route path="/home" element={<LogedinHome />} />
+              <Route path="/uploadsong" element={<UploadSong />} />
+              <Route path="/myMusic" element={<MyMusic />} />
+
+              <Route path="*" element={<Navigate to="/home" />} />
+           
+            
+            </Routes>
+          </songContext.Provider>):(
+            <Routes>
+              <Route path="/login" element={<LoginComponent />} />
+              <Route path="/home" element={<HomeComponent />} />
+              <Route path="/signup" element={<SignupComponent />} />
+              <Route path="*" element={<Navigate to="/login" />} />
             </Routes>)
           }
       </BrowserRouter>

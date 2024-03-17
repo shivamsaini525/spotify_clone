@@ -6,14 +6,41 @@ import {Link, useNavigate} from 'react-router-dom';
 import TextWithHover from "../components/shared/TextWithHover";
 import TextInput from "../components/shared/TextInput";
 import CloudinaryUpload from "../components/shared/CloudinaryUpload";
-import {useState} from "react";
-import {makeAuthenticatedPOSTRequest} from "../utils/serverHelper";
+import {useState,useEffect} from "react";
+import {makeAuthenticatedGETRequest} from "../utils/serverHelper";
 import SingleSongCard from "../components/shared/SingleSongCard";
+import {Howl, Howler} from 'howler';
 
 const MyMusic=()=>{
 
 
+   const [songData,setSongData]=useState([]);
+   const [soundPlayed, setSoundPlayed]=useState(null);
 
+    const playSound=(songSrc)=>{
+       if(soundPlayed){
+         soundPlayed.stop();
+       }
+
+        let sound= new Howl({
+            src:[songSrc],
+            html5: true,
+        });
+        setSoundPlayed(sound);
+        sound.play();
+        console.log(sound)
+    }
+
+   useEffect(()=>{
+    const getData=async()=>{
+        const response=await makeAuthenticatedGETRequest("/song/get/mysongs");
+          setSongData(response.data);
+          console.log(response.data);
+    };
+    getData()
+
+
+   },[]);
 
     return(
         <>
@@ -66,9 +93,18 @@ const MyMusic=()=>{
                     </div> 
 
                     {/* main content */}
-                    <div className="content text-white p-8 pt-0 overflow-auto">
+                    <div className="content text-white p-8 overflow-auto">
                         <div className="text-2xl font-semibold mb-5 text-white mt-8">My Music</div>
-                        <SingleSongCard />
+                        <div className="space-y-3 overflow-auto">
+                           {songData.map((item)=>{
+
+                           return <SingleSongCard info={item} key={item._id} playSoundd={playSound} />
+
+                           })}
+                          
+
+                        </div>
+                        
                        
                         
                     </div>
