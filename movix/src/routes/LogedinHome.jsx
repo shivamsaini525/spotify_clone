@@ -69,7 +69,7 @@ const spotifyPlaylistData=[
 const LogedinHome=()=>{
     return(
         <>
-            <div className="h-full w-full ">
+            <div className="h-full w-full bg-app-black ">
                 <div className="h-9/10 w-full flex">
                     <div className="h-full w-1/5 bg-black  flex flex-col justify-between pb-10">
                         <div className="">
@@ -126,8 +126,18 @@ const LogedinHome=()=>{
                         </div>
                     </div>
                 </div>   
-                {/* cureent player song player */}
-                <div className="w-full h-1/10 bg-pink-400"></div> 
+                {/* cureent player song player  */}
+                <div className="w-full h-1/10 bg-black ng-opacity-30 text-white flex items-center px-4">
+                    <img src="https://plus.unsplash.com/premium_photo-1673276865034-a92ddb23b370?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                      alt="clash" 
+                      className="h-14 w-14 rounded"
+
+                    />
+                    <div className="pl-4">
+                        <div className="text-sm">Clash Dil</div>
+                        <div className="text-xs text-gray-500">Sam Saini</div>
+                    </div>
+                </div> 
             </div>
         </>
     )
