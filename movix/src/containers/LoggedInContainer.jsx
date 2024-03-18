@@ -4,45 +4,89 @@ import { Icon } from '@iconify-icon/react';
 import {Link} from 'react-router-dom';
 
 import TextWithHover from "../components/shared/TextWithHover";
-import { Children, useContext, useState } from "react";
+import { useContext,useLayoutEffect, useRef } from "react";
 import {Howl, Howler} from 'howler';
 import songContext from "../contexts/songContext";
 
 
 
-const LoggedInContainer=({children})=>{
-    const [soundPlayed, setSoundPlayed]=useState(null);
-    const [isPaused, setIsPaused]=useState(true);
-    const {currentSong,setCurrentSong}=useContext(songContext)
-    
-    const playSound=(songSrc)=>{
-        if(soundPlayed){
-          soundPlayed.stop();
+const LoggedInContainer = ({children,curActiveScreen}) => {
+    // const [createPlaylistModalOpen, setCreatePlaylistModalOpen] =
+    //     useState(false);
+    // const [addToPlaylistModalOpen, setAddToPlaylistModalOpen] = useState(false);
+   
+    const {
+        currentSong,
+        setCurrentSong,
+        soundPlayed,
+        setSoundPlayed,
+        isPaused, 
+        setIsPaused,
+    } = useContext(songContext);
+
+    const firstUpdate = useRef(true);
+
+    useLayoutEffect(() => {
+        // the following if statement will prevent the useEffect from running on the first render.
+        if (firstUpdate.current) {
+            firstUpdate.current = false;
+            return;
         }
  
-         let sound= new Howl({
-             src:[songSrc],
-             html5: true,
-         });
-         setSoundPlayed(sound);
-         sound.play();
-         console.log(sound)
+        if (!currentSong) {
+            return;
+        }
+        changeSong(currentSong.track);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [currentSong && currentSong.track]);
+
+    // const addSongToPlaylist = async (playlistId) => {
+    //     const songId = currentSong._id;
+
+    //     const payload = {playlistId, songId};
+    //     const response = await makeAuthenticatedPOSTRequest(
+    //         "/playlist/add/song",
+    //         payload 
+    //     );
+    //     if(response._id){
+    //         setAddToPlaylistModalOpen(false)
+    //     }
+    // };
+
+    const playSound = () => {
+        if (!soundPlayed) {
+            return;
+        }
+        soundPlayed.play();
     };
 
-    const pasuseSound=()=>{
+    const changeSong = (songSrc) => {
+        if (soundPlayed) {
+            soundPlayed.stop();
+        }
+        let sound = new Howl({
+            src: [songSrc],
+            html5: true,
+        });
+        setSoundPlayed(sound);
+        sound.play();
+        setIsPaused(false);
+    };
+
+    const pauseSound = () => {
         soundPlayed.pause();
-
     };
-    const togglePlayPause=()=>{
-        if(isPaused){
-            playSound(currentSong.track);
+
+    const togglePlayPause = () => {
+        if (isPaused) {
+            playSound();
             setIsPaused(false);
-        }else{
-            pasuseSound();
+        } else {
+            pauseSound();
             setIsPaused(true);
         }
-
     };
+
 
 
     return(
@@ -55,10 +99,10 @@ const LoggedInContainer=({children})=>{
                                 <img src={spotify_logo} alt="spotify logo" width={125} />
                             </div>
                             <div className="py-5">
-                                    <IconText iconName={"material-symbols-light:home"} displayText={"Home"} active/>
-                                    <IconText iconName={"material-symbols:search"}   displayText={"Search"}/> 
-                                    <IconText iconName={"icomoon-free:books"} displayText={"Library"}/>
-                                    <IconText iconName={"material-symbols:library-music-sharp"} displayText={"My Music"}/>
+                                    <IconText iconName={"material-symbols-light:home"} displayText={"Home"} active={curActiveScreen==="home"} targetLink={"/home"}/>
+                                    <IconText iconName={"material-symbols:search"}   displayText={"Search"} targetLink={"/home"}  active={curActiveScreen==="search"} /> 
+                                    <IconText iconName={"icomoon-free:books"} displayText={"Library"} targetLink={"/home"}  active={curActiveScreen==="library"}/>
+                                    <IconText iconName={"material-symbols:library-music-sharp"} displayText={"My Music"}  active={curActiveScreen==="myMusic"} targetLink="/myMusic"/>
 
                             </div>
                             <div className="">
@@ -86,9 +130,9 @@ const LoggedInContainer=({children})=>{
                                     <div className="h-1/2 border-r border-white"></div>
                                 </div>
                                 <div className="w-1/3 flex justify-around h-full items-center">
-                                    <TextWithHover displayText={"Upload Song"}/>
+                                    <TextWithHover displayText={"Upload Song"}   />
                                     <div className="">
-                                        <button className="bg-white h-2/3 w-10 h-10 flex items-center justify-center rounded-full font-semibold text-black"><Link to="/login">SS</Link></button>
+                                        <button className="bg-white h-2/3 w-10 h-10 flex items-center justify-center rounded-full font-semibold text-black block" style={{textDecoration:"none"}}><Link to="/login" style={{textDecoration:"none"}}>SS</Link></button>
                                     </div>   
                                 </div>
                                 

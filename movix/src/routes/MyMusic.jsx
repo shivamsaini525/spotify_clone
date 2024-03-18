@@ -44,7 +44,7 @@ const MyMusic=()=>{
     },[]);
 
     return(<>
-        <LoggedInContainer>
+        <LoggedInContainer curActiveScreen="myMusic">
             {/* <div className="content text-white p-8 overflow-auto "> */}
                 <div className="text-2xl font-semibold pb-5 pt-8 text-white pl-2">My Music</div>
                 <div className="space-y-3 overflow-auto">

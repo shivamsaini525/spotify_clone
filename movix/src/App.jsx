@@ -11,8 +11,11 @@ import UploadSong from './routes/UploadSong';
 import MyMusic from './routes/MyMusic';
 import songContext from './contexts/songContext';
 
+
 const App = () => {
   const [currentSong, setCurrentSong]=useState(null);
+  const [soundPlayed, setSoundPlayed]=useState(null);
+  const [isPaused, setIsPaused]=useState(null);
   const [cookie,setCokkie]=useCookies("token");
   console.log(cookie.token);
 
@@ -24,7 +27,7 @@ const App = () => {
              
         { cookie.token ?(
           
-          <songContext.Provider value={{currentSong, setCurrentSong}}>  
+          <songContext.Provider value={{currentSong, setCurrentSong, soundPlayed, setSoundPlayed, isPaused, setIsPaused}}>  
             <Routes>
             
           
