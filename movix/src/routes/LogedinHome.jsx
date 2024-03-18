@@ -74,7 +74,7 @@ const LogedinHome=()=>{
         <>
         <LoggedInContainer curActiveScreen="home" >
             <PlaylistView  titleText="Focus"  cardData={focusCardsData}/>
-            <PlaylistView  titleText="Spotify Playlist" cardData={spotifyPlaylistData} />
+            <PlaylistView  titleText="Playlist" cardData={spotifyPlaylistData} />
             <PlaylistView  titleText="Sound of India" cardData={focusCardsData} />
 
         </LoggedInContainer>

@@ -1,4 +1,5 @@
 import spotify_logo from "../assets/spotify_logo_white.svg";
+import sammusic from "../assets/sammusic.svg";
 import IconText from "../components/shared/IconText";
 import { Icon } from '@iconify-icon/react';
 import {Link} from 'react-router-dom';
@@ -96,7 +97,7 @@ const LoggedInContainer = ({children,curActiveScreen}) => {
                     <div className="h-full w-1/5 bg-black  flex flex-col justify-between pb-10">
                         <div className="">
                             <div className="logoDiv p-6">
-                                <img src={spotify_logo} alt="spotify logo" width={125} />
+                                <img src={sammusic} alt="spotify logo" width={125} style={{backgroundColor:"white"}} />
                             </div>
                             <div className="py-5">
                                     <IconText iconName={"material-symbols-light:home"} displayText={"Home"} active={curActiveScreen==="home"} targetLink={"/home"}/>
@@ -130,7 +131,8 @@ const LoggedInContainer = ({children,curActiveScreen}) => {
                                     <div className="h-1/2 border-r border-white"></div>
                                 </div>
                                 <div className="w-1/3 flex justify-around h-full items-center">
-                                    <TextWithHover displayText={"Upload Song"}   />
+                                    <Link to="/uploadsong" style={{textDecoration:"none"}}>
+                                    <TextWithHover displayText={"Upload Song"}    /></Link>
                                     <div className="">
                                         <button className="bg-white h-2/3 w-10 h-10 flex items-center justify-center rounded-full font-semibold text-black block" style={{textDecoration:"none"}}><Link to="/login" style={{textDecoration:"none"}}>SS</Link></button>
                                     </div>   

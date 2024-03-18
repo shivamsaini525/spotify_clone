@@ -5,6 +5,8 @@ import {Link} from 'react-router-dom';
 import { TiHome } from "react-icons/ti";
 import TextWithHover from "../components/shared/TextWithHover";
 
+import sammusic from "../assets/sammusic.svg";
+
 const focusCardsData=[
     {
         title:"Peaceful Piano",
@@ -73,7 +75,8 @@ const HomeComponent=()=>{
                 <div className="h-full w-1/5 bg-black  flex flex-col justify-between pb-10">
                     <div className="">
                         <div className="logoDiv p-6">
-                            <img src={spotify_logo} alt="spotify logo" width={125} />
+                            {/* <img src={spotify_logo} alt="spotify logo" width={125} /> */}
+                            <img src={sammusic} alt="spotify logo" width={125} style={{backgroundColor:"white"}} />
                         </div>
                         <div className="py-5">
                                 <IconText iconName={"material-symbols-light:home"} displayText={"Home"} active/>
@@ -105,9 +108,11 @@ const HomeComponent=()=>{
                                 <div className="h-1/2 border-r border-white"></div>
                             </div>
                             <div className="w-2/5 flex justify-around h-full items-center">
-                                <TextWithHover displayText={"Sign up"}/>
+                               <Link to="/signup" style={{textDecoration:"none",color:"gray"}}> 
+                                 <TextWithHover displayText={"Sign up"}/>
+                                </Link>
                                 <div className="">
-                                    <button className="bg-white h-2/3 px-8 flex items-center justify-center rounded-full font-semibold text-black"><Link to="/login">Log In</Link></button>
+                                    <button className="bg-white h-2/3 px-8 flex items-center justify-center rounded-full font-semibold text-black"><Link to="/login" style={{textDecoration:"none",color:"gray"}}>Log In</Link></button>
                                 </div>   
                             </div>
                             
